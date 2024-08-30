@@ -5,7 +5,7 @@ html {
 
 body {
   margin: 0;
-  background-color: #f5f5f5;
+  background-color: #424242;
   font-family: Poppins;
 }
 :root {
@@ -44,12 +44,14 @@ header {
   align-items: center;
 }
 header .logo {
-  font-weight: bold;
+  color: #f3f7ec;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bolder;
 }
 header nav a {
   margin-left: 30px;
   text-decoration: none;
-  color: #555;
+  color: #f3f7ec;
   font-family: "Times New Roman", Times, serif;
   text-decoration: none; /* Remove underline */
   transition: color 0.3s ease ease;
@@ -126,7 +128,7 @@ header nav a:hover {
 .carousel .list .item .introduce .des {
   font-size: small;
   font-family: "Times New Roman", Times, serif;
-  color: #1b1a17;
+  color: #f3f7ec;
 }
 .carousel .list .item .introduce .seeMore {
   font-family: Poppins;
@@ -136,11 +138,12 @@ header nav a:hover {
   border-bottom: 1px solid #555;
   background-color: transparent;
   font-weight: bold;
-  letter-spacing: 3px;
   transition: background 0.5s;
 }
 .carousel .list .item .introduce .seeMore:hover {
   background: #eee;
+  padding: 5px;
+  border-radius: 15px;
 }
 .carousel .list .item:nth-child(1) {
   transform: var(--item1-transform);
@@ -313,7 +316,7 @@ header nav a:hover {
 }
 .carousel.carousel.showDetail .list .item:nth-child(2) .checkout button {
   font-family: Poppins;
-  background-color: transparent;
+  background-color: #f3f7ec;
   border: 1px solid #5555;
   margin-left: 5px;
   padding: 5px 10px;
@@ -484,18 +487,18 @@ h1,
 h2,
 h3 {
   font-family: "Times New Roman", Times, serif;
-  background-color: #3c3d37;
-  background: linear-gradient(to right, #3c3d37 70%, #eb5b00 90%);
+  background-color: #f3f7ec;
+  background: linear-gradient(to right, #f3f7ec 70%, #eb5b00 90%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: auto;
 }
 
 .grid-item {
-  background: rgba(0, 0, 0, 0.2); /* Transparent dark background */
-  backdrop-filter: blur(15px) saturate(150%); /* Increase blur and saturation for a more glassy look */
-  -webkit-backdrop-filter: blur(15px) saturate(150%); /* Support for Safari */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border for glass effect */
+  background: rgba(255, 255, 255, 0.1); /* Light background with transparency */
+  border-radius: 10px; /* Rounded corners */
+  backdrop-filter: blur(10px); /* Blur effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   padding: 0.5rem 1rem;
   text-align: center;
   display: flex;
@@ -687,11 +690,17 @@ h3 {
       "box7 box7"
       "box12 box12"
       "box13 box13"
-      "box14 box14"
-      "box8 box9"
-      "box3 box15"
-      "box1 box6"
       "box11 box11";
+  }
+
+  .grid-item-14,
+  .grid-item-8,
+  .grid-item-9,
+  .grid-item-3,
+  .grid-item-15,
+  .grid-item-1,
+  .grid-item-6 {
+    display: none;
   }
 
   .grid-item {
@@ -717,9 +726,10 @@ h3 {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin: 20px;
   text-align: center;
   overflow: hidden;
-  position: relative;
 }
 
 .car-image {
@@ -728,9 +738,10 @@ h3 {
   object-fit: cover;
 }
 
-.car-title {
+.car-card h2 {
   margin: 15px 0;
   font-size: 1.5em;
+  color: #222831;
 }
 
 .car-info {
@@ -759,71 +770,19 @@ h3 {
   margin: 0;
 }
 
-.more-details-button {
+.more {
+  font-family: "Times New Roman", Times, serif;
   margin-top: 10px;
+  margin-left: 75px;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #405d72;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.more-details-button:hover {
-  background-color: #0056b3;
-}
-
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 500px;
-  position: relative;
-}
-
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-@media (max-width: 1200px) {
-  #car-types {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  #car-types {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  #car-types {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 400px) {
-  #car-types {
-    grid-template-columns: 1fr;
-  }
+.more:hover {
+  background-color: #222831;
 }
 /*Cars List Ends*/
