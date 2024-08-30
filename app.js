@@ -53,160 +53,72 @@ backButton.onclick = function () {
   carousel.classList.remove("showDetail");
 };
 
-let listProductHTML = document.querySelector(".listProduct");
-let listCartHTML = document.querySelector(".listCart");
-let iconCart = document.querySelector(".icon-cart");
-let iconCartSpan = document.querySelector(".icon-cart span");
-let body = document.querySelector("body");
-let closeCart = document.querySelector(".close");
-let products = [];
-let cart = [];
+//cars list
 
-iconCart.addEventListener("click", () => {
-  body.classList.toggle("showCart");
-});
-closeCart.addEventListener("click", () => {
-  body.classList.toggle("showCart");
-});
+document.addEventListener("DOMContentLoaded", () => {
+  const carData = [
+    {
+      image: "2.jpg",
+      title: "Car Model 1",
+      attributes: [
+        { icon: "hp-icon.png", subtitle: "Horsepower", value: "300 HP" },
+        { icon: "speed-icon.png", subtitle: "Speed", value: "250 km/h" },
+        { icon: "search-icon.png", subtitle: "Search", value: "" },
+      ],
+      description: "Detailed description about Car Model 1.",
+    },
+    // Add more car data here
+  ];
 
-const addDataToHTML = () => {
-  // remove datas default from HTML
+  const carTypesSection = document.getElementById("car-types");
+  const modal = document.getElementById("car-modal");
+  const modalTitle = document.getElementById("modal-title");
+  const modalDescription = document.getElementById("modal-description");
+  const closeButton = document.querySelector(".close-button");
 
-  // add new datas
-  if (products.length > 0) {
-    // if has data
-    products.forEach((product) => {
-      let newProduct = document.createElement("div");
-      newProduct.dataset.id = product.id;
-      newProduct.classList.add("item");
-      newProduct.innerHTML = `<img src="${product.image}" alt="">
-                <h2>${product.name}</h2>
-                <div class="price">$${product.price}</div>
-                <button class="addCart">Add To Cart</button>`;
-      listProductHTML.appendChild(newProduct);
-    });
-  }
-};
-listProductHTML.addEventListener("click", (event) => {
-  let positionClick = event.target;
-  if (positionClick.classList.contains("addCart")) {
-    let id_product = positionClick.parentElement.dataset.id;
-    addToCart(id_product);
-  }
-});
-const addToCart = (product_id) => {
-  let positionThisProductInCart = cart.findIndex(
-    (value) => value.product_id == product_id
-  );
-  if (cart.length <= 0) {
-    cart = [
-      {
-        product_id: product_id,
-        quantity: 1,
-      },
-    ];
-  } else if (positionThisProductInCart < 0) {
-    cart.push({
-      product_id: product_id,
-      quantity: 1,
-    });
-  } else {
-    cart[positionThisProductInCart].quantity =
-      cart[positionThisProductInCart].quantity + 1;
-  }
-  addCartToHTML();
-  addCartToMemory();
-};
-const addCartToMemory = () => {
-  localStorage.setItem("cart", JSON.stringify(cart));
-};
-const addCartToHTML = () => {
-  listCartHTML.innerHTML = "";
-  let totalQuantity = 0;
-  if (cart.length > 0) {
-    cart.forEach((item) => {
-      totalQuantity = totalQuantity + item.quantity;
-      let newItem = document.createElement("div");
-      newItem.classList.add("item");
-      newItem.dataset.id = item.product_id;
+  carData.forEach((car, index) => {
+    const card = document.createElement("div");
+    card.className = "car-card";
 
-      let positionProduct = products.findIndex(
-        (value) => value.id == item.product_id
-      );
-      let info = products[positionProduct];
-      listCartHTML.appendChild(newItem);
-      newItem.innerHTML = `
-            <div class="image">
-                    <img src="${info.image}">
-                </div>
-                <div class="name">
-                ${info.name}
-                </div>
-                <div class="totalPrice">$${info.price * item.quantity}</div>
-                <div class="quantity">
-                    <span class="minus"><</span>
-                    <span>${item.quantity}</span>
-                    <span class="plus">></span>
-                </div>
-            `;
-    });
-  }
-  iconCartSpan.innerText = totalQuantity;
-};
+    card.innerHTML = `
+            <img src="${car.image}" alt="${car.title}" class="car-image">
+            <h2 class="car-title">${car.title}</h2>
+            <div class="car-info">
+                ${car.attributes
+                  .map(
+                    (attr) => `
+                    <div class="info-item">
+                        <img src="${attr.icon}" alt="${attr.subtitle} Icon" class="info-icon">
+                        <span class="info-subtitle">${attr.subtitle}</span>
+                        <p class="info-value">${attr.value}</p>
+                    </div>
+                `
+                  )
+                  .join("")}
+            </div>
+            <button class="more-details-button" data-index="${index}">More Details</button>
+        `;
 
-listCartHTML.addEventListener("click", (event) => {
-  let positionClick = event.target;
-  if (
-    positionClick.classList.contains("minus") ||
-    positionClick.classList.contains("plus")
-  ) {
-    let product_id = positionClick.parentElement.parentElement.dataset.id;
-    let type = "minus";
-    if (positionClick.classList.contains("plus")) {
-      type = "plus";
+    carTypesSection.appendChild(card);
+  });
+
+  carTypesSection.addEventListener("click", (e) => {
+    if (e.target.classList.contains("more-details-button")) {
+      const index = e.target.getAttribute("data-index");
+      const car = carData[index];
+      modalTitle.textContent = car.title;
+      modalDescription.textContent = car.description;
+      modal.style.display = "flex";
     }
-    changeQuantityCart(product_id, type);
-  }
-});
-const changeQuantityCart = (product_id, type) => {
-  let positionItemInCart = cart.findIndex(
-    (value) => value.product_id == product_id
-  );
-  if (positionItemInCart >= 0) {
-    let info = cart[positionItemInCart];
-    switch (type) {
-      case "plus":
-        cart[positionItemInCart].quantity =
-          cart[positionItemInCart].quantity + 1;
-        break;
+  });
 
-      default:
-        let changeQuantity = cart[positionItemInCart].quantity - 1;
-        if (changeQuantity > 0) {
-          cart[positionItemInCart].quantity = changeQuantity;
-        } else {
-          cart.splice(positionItemInCart, 1);
-        }
-        break;
+  closeButton.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
     }
-  }
-  addCartToHTML();
-  addCartToMemory();
-};
-
-const initApp = () => {
-  // get data product
-  fetch("cars.json")
-    .then((response) => response.json())
-    .then((data) => {
-      products = data;
-      addDataToHTML();
-
-      // get data cart from memory
-      if (localStorage.getItem("cart")) {
-        cart = JSON.parse(localStorage.getItem("cart"));
-        addCartToHTML();
-      }
-    });
-};
-initApp();
+  });
+});
