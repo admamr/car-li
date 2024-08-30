@@ -1,7 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  background-color: #f4f4f4;
+  background-color: #f5f5f5;
   font-family: Poppins;
 }
 :root {
@@ -46,7 +50,14 @@ header nav a {
   margin-left: 30px;
   text-decoration: none;
   color: #555;
+  font-family: "Times New Roman", Times, serif;
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease ease;
   font-weight: 500;
+}
+
+header nav a:hover {
+  color: #f1683a;
 }
 
 /* carousel */
@@ -103,15 +114,18 @@ header nav a {
 }
 .carousel .list .item .introduce .title {
   font-size: 2em;
+  font-family: "Times New Roman", Times, serif;
   font-weight: 500;
   line-height: 1em;
 }
 .carousel .list .item .introduce .topic {
   font-size: 4em;
+  font-family: "Times New Roman", Times, serif;
   font-weight: 500;
 }
 .carousel .list .item .introduce .des {
   font-size: small;
+  font-family: "Times New Roman", Times, serif;
   color: #5559;
 }
 .carousel .list .item .introduce .seeMore {
@@ -444,7 +458,7 @@ header nav a {
     float: right;
   }
 }
-
+/* Carousel Ends*/
 /* Bento Box */
 
 .grid-container {
@@ -455,28 +469,33 @@ header nav a {
   gap: 0.5rem;
   grid-template-areas:
     "box1  box2  box3  box4  box4  box5  box5"
-    "box6  box6  box7  box7  box7  box8  box9"
-    "box10 box11 box7  box7  box7  box8  box9"
+    "box6  box6  box6  box7  box7  box8  box9"
+    "box10 box11 box15  box7  box7  box8  box9"
     "box12 box12 box13 box13 box13 box14 box14";
+  animation: transformFromPosition1 3s ease-in-out 1 forwards;
+}
+
+p {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
 }
 
 h1,
 h2,
 h3 {
-  background-color: #f7b3ff;
-  background: linear-gradient(to right, #f7b3ff 10%, #c53ccf 70%);
+  font-family: "Times New Roman", Times, serif;
+  background-color: #3c3d37;
+  background: linear-gradient(to right, #3c3d37 70%, #eb5b00 90%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: auto;
 }
 
-i {
-  font-size: 2.5rem;
-  margin: auto;
-}
-
 .grid-item {
-  background-color: #444;
+  background: rgba(0, 0, 0, 0.2); /* Transparent dark background */
+  backdrop-filter: blur(15px) saturate(150%); /* Increase blur and saturation for a more glassy look */
+  -webkit-backdrop-filter: blur(15px) saturate(150%); /* Support for Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border for glass effect */
   padding: 0.5rem 1rem;
   text-align: center;
   display: flex;
@@ -488,8 +507,8 @@ i {
 
 .grid-item:hover {
   cursor: pointer;
-  background-color: #555;
-  outline: 1px solid #fff;
+  background: rgba(0, 0, 0, 0.3); /* Slightly darker on hover */
+  outline: 1px solid rgba(255, 255, 255, 0.5); /* Stronger border on hover */
 }
 
 .grid-item-1 {
@@ -532,6 +551,10 @@ i {
   grid-area: box10;
 }
 
+.grid-item-11 {
+  grid-area: box11;
+}
+
 .grid-item-12 {
   grid-area: box12;
 }
@@ -544,8 +567,18 @@ i {
   grid-area: box14;
 }
 
-.grid-item-7 .background {
-  background-color: whitesmoke;
+.grid-item-15 {
+  grid-area: box15;
+}
+
+.grid-item-2,
+.grid-item-15,
+.grid-item-8 {
+  display: flex;
+  justify-content: center;
+}
+
+.grid-item-3 .background {
   height: 100%;
   font-size: 4rem;
   display: grid;
@@ -553,22 +586,73 @@ i {
   border-radius: 0.35rem;
 }
 
-.grid-item-7 .background span {
-  background-color: #f7b3ff;
-  background: linear-gradient(to right, #f7b3ff 20%, #c53ccf 70%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: flex;
-  align-items: center;
+.grid-item-3 img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
-.grid-item-7 .background span i {
-  -webkit-text-fill-color: #000;
-}
-
-.grid-item-8 i,
-.grid-item-9 i {
+.grid-item-5 .background {
+  height: 100%;
   font-size: 4rem;
+  display: grid;
+  place-content: center;
+  border-radius: 0.35rem;
+}
+
+.grid-item-5 img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.grid-item-7 .background {
+  height: 100%;
+  font-size: 4rem;
+  display: grid;
+  place-content: center;
+  border-radius: 0.35rem;
+}
+
+.grid-item-7 img {
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.grid-item-9 .background {
+  height: 100%;
+  font-size: 4rem;
+  display: grid;
+  place-content: center;
+  border-radius: 0.35rem;
+}
+
+.grid-item-9 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.grid-item-11 .background {
+  height: 100%;
+  font-size: 4rem;
+  display: grid;
+  place-content: center;
+  border-radius: 0.35rem;
+}
+
+.grid-item-11 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.grid-item-8 i {
+  font-size: 2rem;
 }
 
 .grid-item-8 h3,
@@ -580,22 +664,22 @@ i {
   font-size: 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .grid-container {
     grid-template-areas:
       "box1  box2  box3  box6"
-      "box4  box4  box4  box4"
+      "box4  box4  box4  box14"
       "box5  box7  box7  box10"
       "box9  box7  box7  box8"
-      "box12 box12 box11 box11"
+      "box12 box12 box11 box15"
       "box13 box13 box14 box14";
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 768px) {
   .grid-container {
     grid-template-areas:
-      "box1 box2"
+      "box5 box2"
       "box4 box4"
       "box10 box10"
       "box7 box7"
@@ -605,8 +689,9 @@ i {
       "box13 box13"
       "box14 box14"
       "box8 box9"
-      "box3 box11"
-      "box5 box6";
+      "box3 box15"
+      "box1 box6"
+      "box11 box11";
   }
 
   .grid-item {
@@ -617,3 +702,5 @@ i {
     height: 250px;
   }
 }
+
+/* Bento Box Ends */
