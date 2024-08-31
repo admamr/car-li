@@ -715,6 +715,16 @@ h3 {
 /* Bento Box Ends */
 
 /* Cars List Starts*/
+
+.car-section {
+  padding: 50px;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5em;
+  font-weight: bolder;
+  border-top: solid salmon;
+  border-width: 2px;
+}
 #car-types {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -804,7 +814,234 @@ h3 {
 @media (max-width: 768px) {
   #car-types {
     grid-template-columns: 1fr;
-    margin: 30px;
+    margin: 20px;
+  }
+
+  .car-section {
+    text-align: center;
   }
 }
 /*Cars List Ends*/
+
+/* Contact form Starts */
+#contact-section {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px; /* Rounded corners */
+  backdrop-filter: blur(10px); /* Blur effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin: 20px;
+}
+
+.contact-form-container,
+.contact-details-container {
+  flex: 1;
+  padding: 20px;
+  min-width: 300px;
+}
+
+.contact-form-container {
+  border-right: 1px solid #ddd;
+}
+
+.contact-form-container h4,
+.contact-details-container h4 {
+  color: #151515;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 90%;
+  padding: 10px;
+  font-family: "Times New Roman", Times, serif;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.contact-details p {
+  font-family: "Times New Roman", Times, serif;
+  margin: 10px 0;
+}
+
+.contact-details a {
+  color: #fff;
+  font-family: "Times New Roman", Times, serif;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  color: #0056b3;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+
+.social-links a {
+  font-size: 24px;
+  margin-right: 10px;
+  color: #333;
+}
+
+.social-links a:hover {
+  color: #007bff;
+}
+
+.map-container {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  #contact-section {
+    flex-direction: column;
+  }
+
+  .contact-form-container {
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+  }
+
+  .map-container {
+    margin-right: 20px;
+  }
+}
+/* Contact form ends */
+
+/* Footer Starts */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  flex: 1 1 200px;
+  margin-bottom: 20px;
+}
+
+.footer-logo h2 {
+  margin: 0;
+  font-size: 24px;
+  ackground-color: #f3f7ec;
+  background: linear-gradient(to right, #f3f7ec 70%, #eb5b00 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-logo p {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  color: #eee;
+}
+
+.footer-links,
+.footer-useful-links,
+.footer-social {
+  flex: 1 1 200px;
+  margin-bottom: 20px;
+}
+
+.footer-links h3,
+.footer-useful-links h3,
+.footer-social h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  ackground-color: #f3f7ec;
+  background: linear-gradient(to right, #f3f7ec 70%, #eb5b00 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-links ul,
+.footer-useful-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li,
+.footer-useful-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a,
+.footer-useful-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-useful-links a:hover {
+  color: #007bff;
+}
+
+.footer-social a {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: #007bff;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  border-top: 1px solid #444;
+  padding-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-logo,
+  .footer-links,
+  .footer-useful-links,
+  .footer-social {
+    flex: 1 1 100%;
+  }
+}
+/* Footer Ends */
