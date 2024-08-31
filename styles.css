@@ -738,10 +738,18 @@ h3 {
   object-fit: cover;
 }
 
-.car-card h2 {
+.car-title {
   margin: 15px 0;
   font-size: 1.5em;
-  color: #222831;
+  font-family: "Times New Roman", Times, serif;
+  color: #151515;
+}
+
+.car-des p {
+  font-size: 14px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .car-info {
@@ -762,12 +770,13 @@ h3 {
 
 .info-subtitle {
   font-size: 0.9em;
-  color: #666;
+  color: #f1683a;
 }
 
 .info-value {
   font-size: 1em;
   margin: 0;
+  padding-left: 10px;
 }
 
 .more {
@@ -784,5 +793,18 @@ h3 {
 
 .more:hover {
   background-color: #222831;
+}
+
+@media (max-width: 1024px) {
+  #car-types {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  #car-types {
+    grid-template-columns: 1fr;
+    margin: 30px;
+  }
 }
 /*Cars List Ends*/
